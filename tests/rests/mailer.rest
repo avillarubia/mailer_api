@@ -1,0 +1,8 @@
+POST http://localhost:3000/api/v1/mailer
+Content-Type: application/json
+
+{
+    "email": "johnnjill3@gmail.com",
+    "subject": "Test subject",
+    "html": "<p>This is test html</p>"
+}
