@@ -3,6 +3,8 @@ const express = require('express')
 const app = express()
 
 require('./starters/logging')()
+require('./starters/parser')(app)
+require('./starters/cors')(app)
 require('./starters/routes')(app)
 require('./starters/db')()
 require('./starters/config')()
