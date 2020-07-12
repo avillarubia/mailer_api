@@ -16,7 +16,7 @@ const options = {
 }
 
 router.post('/', async (req, res) => {
-    const { body: { email, subject, html } } = req
+    const { email, subject, html } = req.body
 
     const schema = {
         email: Joi.string().min(5).max(50).email().label('email').required(),

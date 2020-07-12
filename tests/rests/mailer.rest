@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/v1/mailer
+POST http://mailer-dn-api.herokuapp.com/api/v1/mailer
 Content-Type: application/json
 
 {
