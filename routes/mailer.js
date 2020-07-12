@@ -8,6 +8,7 @@ const router = express.Router()
 const options = {
     host: config.get('MAILER_HOST'),
     port: config.get('MAILER_PORT') || 587,
+    secureConnection: true,
     requireTls: config.get('MAILER_SECURE') || true,
     auth: {
         user: config.get('MAILER_EMAIL'),
