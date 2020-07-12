@@ -29,14 +29,18 @@ router.post('/', async (req, res) => {
 
     let transporter = mailer.createTransport(options)
 
-    const mailerResp = await transporter.sendMail({
-        from: config.get('MAILER_EMAIL'),
-        to: email,
-        subject,
-        html
-    })
+    try {
+        const mailerResp = await transporter.sendMail({
+            from: config.get('MAILER_EMAIL'),
+            to: email,
+            subject,
+            html
+        })
 
-    resp(res, mailerResp)
+        resp(res, mailerResp)
+    } catch (error) {
+        resp(res, error, 500)
+    }
 })
 
 module.exports = router
