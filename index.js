@@ -11,7 +11,7 @@ require('./starters/db')()
 require('./starters/dataValidator')()
 require('./starters/prod')(app)
 
-const port = process.env.PORT
+const port = process.env.PORT || 3002
 const server = app.listen(port, () =>
     winston.info(`Listening on port ${port}...`)
 )
