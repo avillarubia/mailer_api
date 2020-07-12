@@ -7,7 +7,7 @@ require('./starters/parser')(app)
 require('./starters/cors')(app)
 require('./starters/routes')(app)
 require('./starters/db')()
-require('./starters/config')()
+// require('./starters/config')()
 require('./starters/dataValidator')()
 require('./starters/prod')(app)
 
