@@ -15,8 +15,8 @@ module.exports = function () {
 
     const transportOptions = { filename: 'logs/logfile.log' }
     winston.add(winston.transports.File, transportOptions)
-    winston.add(winston.transports.MongoDB, {
-        db: config.get('MONGO_URI'),
-        level: 'info'
-    })
+    // winston.add(winston.transports.MongoDB, {
+    //     db: config.get('MONGO_URI'),
+    //     level: 'info'
+    // })
 }
