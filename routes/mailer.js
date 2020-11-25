@@ -5,9 +5,8 @@ const config = require('config')
 const Joi = require('@hapi/joi')
 const router = express.Router()
 
-const asdf = config.get('MAILER_HOST')
 const options = {
-    host: asdf,
+    host: config.get('MAILER_HOST'),
     port: config.get('MAILER_PORT') || 587,
     // secureConnection: true,
     requireTls: config.get('MAILER_SECURE') || true,
@@ -19,6 +18,7 @@ const options = {
 
 router.post('/', async (req, res) => {
     const { email, subject, html } = req.body
+    const pasdf = config.get('MAILER_PASS')
 
     const schema = {
         email: Joi.string().min(5).max(50).email().label('email').required(),
@@ -29,13 +29,14 @@ router.post('/', async (req, res) => {
     const { error } = Joi.object(schema).validate(req.body)
     if (error) return resp(res, error.message, 400)
 
-
     try {
 
         let transporter = mailer.createTransport(options)
 
+        const fromEmail = config.get('MAILER_EMAIL')
+
         const mailerResp = await transporter.sendMail({
-            from: config.get('MAILER_EMAIL'),
+            from: fromEmail,
             to: email,
             subject,
             html
